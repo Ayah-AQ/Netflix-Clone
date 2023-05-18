@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./rest.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
+// Imgs
 
+
+//styles
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle} from "./Components/Style/Style";
+//components
+
+import Routers from './Components/Routers';
+import NavBar from './Components/Navbar/Navbar';
+
+//Dark&Light Theme
+const theme = {
+  light: {
+    mainColor:"black",
+  backgroundColor:"rgba(212, 212, 212, 0.55)",
+},
+ 
+  dark: {
+    mainColor: "white",
+    backgroundColor:"#231e23",
+  },
+};
+// Code
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  //Theme
+  const [currentTheme, setCurrentTheme] = useState("light");
+  const ToggleCurrentTheme = () => {
+    if (currentTheme === "light") setCurrentTheme("dark");
+    else setCurrentTheme("light");
+  };
 
-export default App;
+  
+         return (    
+        //theme --------------------------
+          <ThemeProvider theme={theme[currentTheme]}>
+          <GlobalStyle />  
+          
+         {/*NavBar-------------------------------------------------------*/}
+         <NavBar currentTheme={currentTheme} ToggleCurrentTheme={ToggleCurrentTheme} />
+        <Routers/>
+     
+         </ThemeProvider>
+     
+ )};
+
+export default App ;
