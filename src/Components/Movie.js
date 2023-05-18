@@ -15,7 +15,7 @@ function Movie({ movie }) {
       <Card style={{ width: '18rem' ,margin:'10px'  }}  >
         <Card.Img variant="top" src={poster_pathURL+movie.poster_path} />
         <Card.Body>
-          <Card.Title>{movie.title}</Card.Title>
+          <Card.Title>{movie.title} {movie.name}</Card.Title>
           <div>
           <Card.Text>
             {movie.overview}

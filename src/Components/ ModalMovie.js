@@ -5,19 +5,22 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 function ModalMovie(props) {
-  const [comment, setComment] = useState('');
+  const [comments, setComment] = useState('');
 
-  const handleAddToFavorite = () => {
+  
+  const handleAddToFavorite = (event) => {
+    event.preventDefault(); 
     const serverURL = 'http://localhost:8000/add';
 
     const movieData = {
       title: props.movie.title,
       release_date: props.movie.release_date,
       overview: props.movie.overview,
-    };
+      comments:comments
+          }
 
     axios
-      .post(serverURL, movieData)
+      .post(serverURL, movieData )
       .then((response) => {
         console.log(response.data);
        
@@ -28,7 +31,7 @@ function ModalMovie(props) {
       });
 
     
-    setComment('');// Reset comment 
+    setComment('');
     props.setShowModal(false);
   };
 
@@ -44,18 +47,19 @@ function ModalMovie(props) {
   return (
     <Modal show={props.showModal} onHide={handleCloseModal}>
       <Modal.Header closeButton>
-        <Modal.Title>{props.movie.title}</Modal.Title>
+        <Modal.Title>{props.movie.title} {props.movie.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <img src={poster_pathURL+props.movie.poster_path} alt={props.movie.title} width='100%' />
         {props.movie.overview}
-        <Form.Group controlId="comment">
-          <Form.Label>Comment</Form.Label>
+        <Form.Group controlId="comments">
+          <Form.Label>comments</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
-            value={comment}
+            value={comments}
             onChange={handleCommentChange}
+
           />
         </Form.Group>
       </Modal.Body>

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import Home from "./Home";
+import FavList from "./FavList";
 
 const Routers = () => {
 
@@ -7,6 +8,8 @@ const Routers = () => {
         <div>
      <Routes>
     <Route path="/"  element={<Home/>}/>
+    <Route path="/fav"  element={<FavList/>}/>
+
    </Routes> 
         </div>
     );

@@ -37,3 +37,7 @@ body {
      justify-content: center;
      display: flex;
      `;
+     export const ListM = styled.div`
+    margin-left: 5vw;
+    margin-right: 5vw;
+     `;
