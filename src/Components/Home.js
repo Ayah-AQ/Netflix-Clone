@@ -7,7 +7,7 @@ function Home() {
     const [moviesData, setMoviesData] = useState([])
 
     const getAllMovies = () => {
-        const serverURL = `https://movies-library-avh7.onrender.com/trending`;
+        const serverURL = `https://movies-library-bzgy.onrender.com/trending`;
 
 
         fetch(serverURL)
