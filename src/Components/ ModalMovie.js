@@ -10,7 +10,7 @@ function ModalMovie(props) {
   
   const handleAddToFavorite = (event) => {
     event.preventDefault(); 
-    const serverURL = 'https://api.render.com/deploy/srv-chhijbgrddl9a76k3k50?key=yBubcjQDGt4/add';
+    const serverURL = 'https://movies-library-bzgy.onrender.com/add';
 
     const movieData = {
       title: props.movie.title,
