@@ -16,7 +16,7 @@ const NavBar = ({ currentTheme, ToggleCurrentTheme }) => {
 
           <>
         <NavItem to="/">Home</NavItem>
-        <NavItem to="/Fav">Favorites</NavItem>        </>
+        <NavItem to="/fav">Favorites</NavItem>        </>
       
         <ThemeButton className="nav-item" type="button" onClick={ToggleCurrentTheme}>
         <Mood  src={currentTheme === "light" ? darkM:lightM} alt="mood" />

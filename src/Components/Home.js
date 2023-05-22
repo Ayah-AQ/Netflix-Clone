@@ -7,13 +7,13 @@ function Home() {
     const [moviesData, setMoviesData] = useState([])
 
     const getAllMovies = () => {
-        const serverURL = `http://localhost:8000/trending`;
+        const serverURL = `https://movies-library-avh7.onrender.com/trending`;
 
 
         fetch(serverURL)
             .then(response => {
                 response.json().then(data => {
-                    console.log(data)
+                    // console.log(data)
                     setMoviesData(data)
 
                 })
