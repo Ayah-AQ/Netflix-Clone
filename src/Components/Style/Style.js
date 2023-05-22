@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
 import {createGlobalStyle} from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`

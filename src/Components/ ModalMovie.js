@@ -16,6 +16,7 @@ function ModalMovie(props) {
       title: props.movie.title,
       release_date: props.movie.release_date,
       overview: props.movie.overview,
+      poster_path: props.movie.poster_path,
       comments:comments
           }
 
@@ -46,33 +47,33 @@ function ModalMovie(props) {
 
   return (
     <Modal show={props.showModal} onHide={handleCloseModal}>
-      <Modal.Header closeButton>
-        <Modal.Title>{props.movie.title} {props.movie.name}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <img src={poster_pathURL+props.movie.poster_path} alt={props.movie.title} width='100%' />
-        {props.movie.overview}
-        <Form.Group controlId="comments">
-          <Form.Label>comments</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={comments}
-            onChange={handleCommentChange}
+    <Modal.Header closeButton>
+      <Modal.Title>{props.movie.title} {props.movie.name}</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <img src={poster_pathURL+props.movie.poster_path} alt={props.movie.title} width='100%' />
+      {props.movie.overview}
+      <Form.Group controlId="comments">
+        <Form.Label>comments</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          value={comments}
+          onChange={handleCommentChange}
 
-          />
-        </Form.Group>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleCloseModal}>
-          Close
-        </Button>
-        <Button variant="dark" onClick={handleAddToFavorite}>
-          Add to Favorites
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
+        />
+      </Form.Group>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleCloseModal}>
+        Close
+      </Button>
+      <Button variant="dark" onClick={handleAddToFavorite}>
+        Add to Favorites
+      </Button>
+    </Modal.Footer>
+  </Modal>
+);
 }
 
 export default ModalMovie;
