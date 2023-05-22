@@ -10,7 +10,7 @@ export default function FavList() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
     // Fetch the favorite movies data from the server
-    const serverURL = `http://localhost:8000/list`;
+    const serverURL = `https://movies-library-bzgy.onrender.com/list`;
 
     axios
       .get(serverURL)
@@ -23,7 +23,8 @@ export default function FavList() {
   }, []);
 // console.log("movieeeeee",movies)
   const handleDelete = (id) => {
-    const serverURL = `http://localhost:8000/del/${id}`;
+    console.log(id)
+    const serverURL = `https://movies-library-bzgy.onrender.com/del/${id}`;
 
     axios
       .delete(serverURL)
