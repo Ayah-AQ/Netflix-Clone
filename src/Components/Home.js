@@ -8,6 +8,7 @@ function Home() {
 
     const getAllMovies = () => {
         const serverURL = `https://movies-library-bzgy.onrender.com/trending`;
+        // const serverURL = `http://localhost:8000/trending`;
 
 
         fetch(serverURL)

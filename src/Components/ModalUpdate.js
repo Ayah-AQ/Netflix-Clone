@@ -9,6 +9,8 @@ function ModalUpdate(props) {
 
   const handleUpdate = () => {
     const serverURL = `https://movies-library-bzgy.onrender.com/update/${props.movie.id}`;
+    // const serverURL = `http://localhost:8000/update/${props.movie.id}`;
+
     //updateComment/:id
     const updatedMovieData = {
       comments: updatedComment
