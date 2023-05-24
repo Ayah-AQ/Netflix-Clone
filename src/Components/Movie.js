@@ -16,8 +16,8 @@ function Movie({ movie }) {
 
 
   return (
-    <>
-      <Card style={{ height:'30rem', width: '18rem' ,margin:'10px'  }}  >
+      <>
+      <Card style={{ height:'auto', width: '18rem' ,margin:'10px'  }}  >
         <Card.Img variant="top" src={poster_pathURL+movie.poster_path}  height='60%'/>
         <Card.Body>
           <Card.Title>{movie.title} {movie.name}</Card.Title>
@@ -36,10 +36,11 @@ function Movie({ movie }) {
             </Card.Text>
           </div>
           <Button variant="transparent" onClick={handleAddToFavorites} alt='add to fav'>
-          < RiHeartAddFill size='30px' style={{position: 'absolute', top: '90%', left: '80%'}}/>          
+          < RiHeartAddFill size='30px' style={{position: 'absolute', top: '95%', left: '85%'}}/>          
           </Button>
         </Card.Body>
       </Card>
+        
       {showModal && (
         <ModalMovie
           movie={movie}
