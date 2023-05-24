@@ -3,14 +3,20 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import ModalUpdate from './ModalUpdate';
+import { MdDelete } from "react-icons/md";
+import { RiFileEditLine } from "react-icons/ri";
+
+
 
 export default function FavList() {
   const [movies, setMovies] = useState([]);
+  const [showFullText, setShowFullText] = useState(false); 
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
     // Fetch the favorite movies data from the server
     const serverURL = `https://movies-library-bzgy.onrender.com/list`;
+    // const serverURL = `http://localhost:8000/list`;
 
     axios
       .get(serverURL)
@@ -25,6 +31,7 @@ export default function FavList() {
   const handleDelete = (id) => {
     console.log(id)
     const serverURL = `https://movies-library-bzgy.onrender.com/del/${id}`;
+    // const serverURL = `http://localhost:8000/del/${id}`;
 
     axios
       .delete(serverURL)
@@ -44,33 +51,42 @@ export default function FavList() {
   const poster_pathURL = "http://image.tmdb.org/t/p/w500/";
   return (
     <div>
-      <h1>Favorite List</h1>
-      <div className="row">
+      <div className="row" style={{marginLeft:'5%', marginRight:'5%'}}>
         {movies.map((movie) => (
-          <div className="col-md-4" key={movie.id}>
-            <Card style={{ marginBottom: '20px' }}>
-              <Card.Img variant="top" src={poster_pathURL + movie.poster_path} />
+          <div className="col-md-3" key={movie.id} >
+            <Card >
+              <Card.Img variant="top" src={poster_pathURL + movie.poster_path} height='300rem' />
               <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>
-                  {movie.overview}
-                  <br/>
-                  <br/>
+              {showFullText ? (
+                movie.overview 
+              ) : (
+                <>
+                  {movie.overview.substring(0, 50)} ...
+                  <Button variant="link" onClick={() => setShowFullText(true)}>
+                    Show More
+                  </Button>
+                </>
+              )}
+            </Card.Text>
+                <Card.Text>
+                  
 
-                  Comments: {movie.comments} 
+                 <strong>Comments:</strong>  {movie.comments} 
 
                 </Card.Text>
                 <Button
-                  variant="danger"
+                  variant='transparent'
                   onClick={() => handleDelete(movie.id)}
                 >
-                  Delete
+                    <MdDelete size='25px'/>
                 </Button>
                 <Button
-                  variant="primary"
+                  variant="transparent"
                   onClick={() => handleUpdate(movie)}
                 >
-                  Update
+                  <RiFileEditLine size='25px'/>
                 </Button>
               </Card.Body>
             </Card>

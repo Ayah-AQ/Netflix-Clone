@@ -11,6 +11,7 @@ import { GlobalStyle} from "./Components/Style/Style";
 
 import Routers from './Components/Routers';
 import NavBar from './Components/Navbar/Navbar';
+import Footer from "./Components/Footer/footer";
 
 //Dark&Light Theme
 const theme = {
@@ -42,6 +43,7 @@ function App() {
          {/*NavBar-------------------------------------------------------*/}
          <NavBar currentTheme={currentTheme} ToggleCurrentTheme={ToggleCurrentTheme} />
         <Routers/>
+        <Footer/>
      
          </ThemeProvider>
      

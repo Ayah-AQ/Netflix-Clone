@@ -3,12 +3,17 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useState } from 'react';
+import { Image } from 'react-bootstrap';
+import { TbSend } from "react-icons/tb";
+import { GiCancel } from "react-icons/gi";
 
 function ModalUpdate(props) {
   const [updatedComment, setUpdatedComment] = useState('');
 
   const handleUpdate = () => {
     const serverURL = `https://movies-library-bzgy.onrender.com/update/${props.movie.id}`;
+    // const serverURL = `http://localhost:8000/update/${props.movie.id}`;
+
     //updateComment/:id
     const updatedMovieData = {
       comments: updatedComment
@@ -40,15 +45,19 @@ function ModalUpdate(props) {
     setUpdatedComment(event.target.value);
   };
 
+  const poster_pathURL = "http://image.tmdb.org/t/p/w500/"
+
   return (
     <Modal show={props.showModal} onHide={handleCloseModal}>
       <Modal.Header closeButton>
         <Modal.Title>{props.movie.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-       {props.movie.overview}
+      <Image variant="top" src={poster_pathURL+ props.movie.poster_path} fluid  height='40%' width='40%'/>
+       <p>{props.movie.overview}</p>
         <Form.Group controlId="updatedComment">
-          <Form.Label>Updated Comment</Form.Label>
+          <br/>
+          <Form.Label><strong>Update the Comment</strong></Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -58,11 +67,11 @@ function ModalUpdate(props) {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleCloseModal}>
-          Close
+        <Button variant="transparent" onClick={handleCloseModal} >
+          <GiCancel size='30px'/>
         </Button>
-        <Button variant="primary" onClick={handleUpdate}>
-          Update
+        <Button variant="transparent" onClick={handleUpdate} >
+          <TbSend size='30px'/>
         </Button>
       </Modal.Footer>
     </Modal>
