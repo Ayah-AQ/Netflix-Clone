@@ -53,22 +53,15 @@ export default function FavList() {
     <div>
       <div className="row" style={{marginLeft:'5%', marginRight:'5%'}}>
         {movies.map((movie) => (
-          <div className="col-md-3" key={movie.id} >
+          <div className="col-md-3" key={movie} >
             <Card >
               <Card.Img variant="top" src={poster_pathURL + movie.poster_path} height='300rem' />
               <Card.Body>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>
-              {showFullText ? (
-                movie.overview 
-              ) : (
-                <>
-                  {movie.overview.substring(0, 50)} ...
-                  <Button variant="link" onClick={() => setShowFullText(true)}>
-                    Show More
-                  </Button>
-                </>
-              )}
+              
+                {movie.overview }
+             
             </Card.Text>
                 <Card.Text>
                   
